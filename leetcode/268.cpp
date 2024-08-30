@@ -1,15 +1,10 @@
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
-        std::unordered_set<int> num_set(nums.begin(), nums.end());
-        int max_number = *std::max_element(nums.begin(), nums.end());
-        
-        for (int num = 0; num <= max_number; ++num) {
-            if (num_set.find(num) == num_set.end()) {
-                return num;
-            }
+        int sum = (nums.size() * (nums.size() + 1) / 2);
+        for(int i = 0; i < nums.size(); i++){
+            sum-=nums[i];
         }
-        
-        return max_number + 1;
+        return sum;
     }
 };
